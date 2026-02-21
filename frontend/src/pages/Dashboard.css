@@ -1,0 +1,440 @@
+/* ═══════════════════════════════════════════════════════════════
+   Dashboard Styles — Institutional Grid
+   ═══════════════════════════════════════════════════════════════ */
+
+.dashboard {
+    min-height: 100vh;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+
+.dash-header {
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-glass);
+    margin-bottom: 2rem;
+}
+
+.dash-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dash-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+
+.dash-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+.dash-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ws-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.ws-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-muted);
+}
+
+.ws-indicator.connected .ws-dot {
+    background: var(--accent-green);
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+    animation: pulse 2s infinite;
+}
+
+.ws-indicator.connected {
+    color: var(--accent-green);
+}
+
+/* ── Grid Layout ──────────────────────────────────────────── */
+
+.dash-grid {
+    padding-bottom: var(--sp-xl);
+}
+
+.desktop-view .dash-grid {
+    display: block;
+    /* Content is managed by .desktop-panels-reveal and .grid-12 */
+}
+
+.mobile-view .dash-grid {
+    display: block;
+}
+
+.desktop-panels-reveal {
+    width: 100%;
+}
+
+/* ── Panel Tabs ───────────────────────────────────────────── */
+
+.panel-tabs-scroll {
+    margin-top: 1.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.panel-tabs-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.panel-tabs {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.panel-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1.2rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.panel-tab:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.panel-tab.active {
+    color: var(--accent-blue);
+    border-bottom-color: var(--accent-blue);
+    background: linear-gradient(to bottom, transparent, rgba(99, 102, 241, 0.05));
+}
+
+.p-icon {
+    font-size: 1.1rem;
+}
+
+/* ── Placeholder Content ──────────────────────────────────── */
+
+.panel-content-placeholder {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10rem 2rem;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px dashed var(--border-glass);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.panel-content-placeholder h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.panel-content-placeholder p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* ── Asset Class Tabs ────────────────────────────────────── */
+
+.asset-tabs {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-bottom: 0.5rem;
+}
+
+.asset-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.asset-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    font-family: var(--font-body);
+}
+
+.asset-tab:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.asset-tab.active {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1));
+    color: var(--accent-blue);
+    border-color: rgba(99, 102, 241, 0.3);
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.15);
+}
+
+.tab-icon {
+    font-size: 1rem;
+}
+
+.tab-label {
+    font-size: 0.85rem;
+}
+
+/* ── Asset Class Badges ──────────────────────────────────── */
+
+.badge-class {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-forex {
+    background: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+}
+
+.badge-index {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+}
+
+.badge-commodity {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+}
+
+.badge-metal {
+    background: rgba(234, 179, 8, 0.15);
+    color: #facc15;
+}
+
+.badge-crypto {
+    background: rgba(139, 92, 246, 0.15);
+    color: #a78bfa;
+}
+
+.signals-col .section-title {
+    margin-bottom: 1.5rem;
+}
+
+.signals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.widgets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 1400px) {
+    .widgets-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── WebSocket Feed ───────────────────────────────────────── */
+
+.ws-feed {
+    margin-bottom: 1.5rem;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.ws-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.4rem 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.ws-sym {
+    font-weight: 600;
+    min-width: 80px;
+}
+
+.ws-score {
+    color: var(--accent-blue);
+    font-weight: 500;
+    flex: 1;
+}
+
+.ws-time {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+/* ── Mobile-Specific Navigation Enhancements ──────────────── */
+
+.mobile-view .dashboard-section {
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-view .dashboard-section:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+
+.mobile-view .section-header-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--sp-xs);
+}
+
+.mobile-view .view-link {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ── Animation Primitive ───────────────────────────────────── */
+
+.animate-in {
+    animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+    .dash-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Sidebar Layout ───────────────────────────────────────── */
+.dash-grid.with-sidebar {
+    padding-right: 400px;
+    transition: padding-right 0.3s ease;
+}
+
+@media (max-width: 1400px) {
+    .dash-grid.with-sidebar {
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .signals-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dash-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .asset-tab {
+        padding: 0.5rem 0.8rem;
+    }
+
+    .tab-label {
+        font-size: 0.75rem;
+    }
+}
+
+/* ── Status & Loading ──────────────────────────────────────── */
+
+.error-banner {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: var(--accent-red);
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    grid-column: 1 / -1;
+}
+
+.loading-spinner-inline {
+    display: inline-block;
+    width: 0.9rem;
+    height: 0.9rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--accent-blue);
+    border-radius: 50%;
+    animation: rotate 1s linear infinite;
+    margin-left: 0.8rem;
+    vertical-align: middle;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}

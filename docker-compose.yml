@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  # ── PostgreSQL ──────────────────────────────────────────────
+  postgres:
+    image: postgres:15-alpine
+    container_name: vil-postgres
+    environment:
+      POSTGRES_DB: vildb
+      POSTGRES_USER: vil
+      POSTGRES_PASSWORD: vilpass
+    ports:
+      - "5432:5432"
+    volumes:
+      - vil_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U vil -d vildb" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # ── Redis ───────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: vil-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - vil_redis:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  vil_pgdata:
+  vil_redis:

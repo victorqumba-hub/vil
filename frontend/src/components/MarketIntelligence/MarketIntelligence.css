@@ -1,0 +1,529 @@
+/* MarketIntelligence.css */
+
+.market-intel-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.mi-top-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .mi-top-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Tables & Lists ────────────────────────────────────────── */
+
+.dark-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.dark-table th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-weight: 500;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.dark-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.dark-table tr:last-child td {
+    border-bottom: none;
+}
+
+.text-white {
+    color: var(--text-primary);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.text-green {
+    color: var(--accent-green);
+}
+
+.text-red {
+    color: var(--accent-red);
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.badge-impact {
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.badge-impact.high {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+.badge-impact.medium {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+}
+
+.badge-impact.low {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+}
+
+/* ── Card Headers & Tabs ───────────────────────────────────── */
+.flex-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.header-tabs {
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.header-tab {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.header-tab.active {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.dot-green {
+    width: 6px;
+    height: 6px;
+    background: var(--accent-green);
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--accent-green);
+}
+
+/* ── Converter ─────────────────────────────────────────────── */
+.converter-form {
+    padding: 1rem;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0 1rem;
+}
+
+.dark-input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.8rem 0;
+    width: 100%;
+    outline: none;
+    font-family: var(--font-mono);
+}
+
+.highlight-text {
+    color: var(--accent-green);
+}
+
+.currency-tag {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.converter-swap {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.swap-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.swap-btn:hover {
+    transform: rotate(180deg);
+}
+
+.full-width {
+    width: 100%;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-3 {
+    margin-top: 0.75rem;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.mb-1 {
+    margin-bottom: 0.25rem;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.micro-text {
+    font-size: 0.6rem;
+    letter-spacing: 0.5px;
+}
+
+.opacity-50 {
+    opacity: 0.5;
+}
+
+/* ── News Feed & Analysis ──────────────────────────────────── */
+
+.news-analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .news-analysis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card-title-sm {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: var(--accent-blue);
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.news-item-row {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.news-item-row:last-child {
+    border-bottom: none;
+}
+
+.news-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+}
+
+.badge-bullish {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+.badge-bearish {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+.badge-neutral {
+    background: rgba(148, 163, 184, 0.2);
+    color: #cbd5e1;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+.news-headline {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--text-secondary);
+}
+
+.analysis-card {
+    background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), rgba(30, 41, 59, 0.6));
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.badge-blue {
+    background: var(--accent-blue);
+    color: white;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+.analysis-content {
+    padding: 1.25rem;
+}
+
+.analysis-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin: 1rem 0 0.5rem 0;
+    line-height: 1.2;
+}
+
+.analysis-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* ── Sentiment Rows ────────────────────────────────────────── */
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sent-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.sent-val {
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+}
+
+.bg-green {
+    background: var(--accent-green);
+}
+
+.bg-red {
+    background: var(--accent-red);
+}
+
+/* ── Live Market Strip ─────────────────────────────────────── */
+.strip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.market-mini-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.25rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.market-mini-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.market-mini-card.up {
+    border-left: 3px solid var(--accent-green);
+}
+
+.market-mini-card.down {
+    border-left: 3px solid var(--accent-red);
+}
+
+.mini-card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.mini-sym {
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+.mini-name {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.mini-icon {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.mini-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.mini-change {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.mini-chart-deco {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40%;
+    height: 40px;
+    opacity: 0.3;
+}
+
+.strip-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.btn-group {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 4px;
+    display: inline-flex;
+}
+
+.btn-filter {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-filter.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .market-intel-section {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .flex-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .header-tabs {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .header-tab {
+        flex: 1;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .mini-card-header {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .mini-price {
+        font-size: 1.25rem;
+    }
+}

@@ -1,0 +1,268 @@
+.oanda_risk_terminal {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.risk-terminal-loading {
+    padding: 2rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Header Badges */
+.terminal-header-badges {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.badge.demo {
+    background: rgba(255, 171, 0, 0.15);
+    color: #ffab00;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border: 1px solid rgba(255, 171, 0, 0.3);
+}
+
+.sync-indicator {
+    font-size: 0.7rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.sync-indicator.syncing::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 1s infinite;
+}
+
+/* Capital Grid */
+.capital-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.cap-item.main {
+    grid-column: span 2;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+}
+
+.cap-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.cap-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.cap-value.highlighted {
+    font-size: 1.75rem;
+    color: #fff;
+}
+
+/* Margin Strip */
+.margin-strip {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.m-label {
+    color: #888;
+    font-size: 0.7rem;
+    display: block;
+}
+
+.m-value {
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.m-value.safe {
+    color: #00e676;
+}
+
+.m-value.risk {
+    color: #ff5252;
+}
+
+/* Tabs */
+.terminal-tabs {
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.terminal-tabs button {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    background: transparent;
+    color: #888;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.terminal-tabs button.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Execution Table */
+.execution-table-wrapper {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.execution-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+}
+
+.execution-table th {
+    text-align: left;
+    color: #666;
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-transform: uppercase;
+    font-size: 0.65rem;
+}
+
+.execution-row td {
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.execution-row:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.sym-cell {
+    display: flex;
+    flex-direction: column;
+}
+
+.sym {
+    font-weight: 700;
+    color: #fff;
+}
+
+.broker-id {
+    font-size: 0.65rem;
+    color: #555;
+}
+
+.side-badge {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 800;
+}
+
+.side-badge.buy {
+    background: rgba(0, 230, 118, 0.1);
+    color: #00e676;
+}
+
+.side-badge.sell {
+    background: rgba(255, 82, 82, 0.1);
+    color: #ff5252;
+}
+
+.status-badge {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.status-badge.open {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+}
+
+.status-badge.closed {
+    background: rgba(255, 255, 255, 0.1);
+    color: #888;
+}
+
+/* Stats Row */
+.stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.stat-box {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.75rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: #888;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.positive {
+    color: #00e676;
+}
+
+.negative {
+    color: #ff5252;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.4;
+    }
+}

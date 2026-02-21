@@ -1,0 +1,136 @@
+.audit-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-lg);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.audit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-lg);
+}
+
+.audit-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: var(--card-padding-desktop);
+    display: flex;
+    flex-direction: column;
+}
+
+.audit-card h3 {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: var(--sp-md);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ── Audit Timeline ──────────────────────────────────────── */
+
+.audit-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 16px;
+    border-left: 1px solid var(--border-glass);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    box-shadow: 0 0 4px var(--accent-blue);
+}
+
+.timeline-item.error::before {
+    background: var(--accent-red);
+    box-shadow: 0 0 4px var(--accent-red);
+}
+
+.timeline-time {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    font-family: var(--font-mono);
+}
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.timeline-title {
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+}
+
+.timeline-desc {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* ── Score Evolution Table ───────────────────────────────── */
+
+.audit-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.audit-table th {
+    text-align: left;
+    padding: 8px 12px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.audit-table td {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+}
+
+.audit-table tr:hover td {
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.score-change {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.score-up {
+    color: var(--accent-green);
+}
+
+.score-down {
+    color: var(--accent-red);
+}

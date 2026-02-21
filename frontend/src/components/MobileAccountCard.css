@@ -1,0 +1,102 @@
+.mobile-account-card {
+    padding: var(--sp-lg);
+    background: linear-gradient(145deg, rgba(79, 70, 229, 0.1), rgba(10, 12, 18, 0.8));
+    border: 1px solid var(--border-accent);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--sp-sm);
+}
+
+.card-header .label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.pl-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.pl-badge.profit {
+    background: rgba(5, 150, 105, 0.15);
+    color: var(--accent-green);
+}
+
+.pl-badge.loss {
+    background: rgba(220, 38, 38, 0.15);
+    color: var(--accent-red);
+}
+
+.main-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: var(--sp-lg);
+}
+
+.main-stat .currency {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.main-stat .amount {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: var(--sp-lg);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-label {
+    font-size: 0.625rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.stat-value.risk {
+    color: var(--accent-amber);
+}
+
+.risk-bar-container {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.risk-bar-fill {
+    height: 100%;
+    background: var(--grad-primary);
+    box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+    border-radius: 2px;
+}

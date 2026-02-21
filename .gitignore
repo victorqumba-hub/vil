@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Node
+node_modules/
+dist/
+.DS_Store
+
+# VIL specific
+vildb.sqlite
+*.log
+backend_err.log
+frontend_err.log
+backend.log
+frontend.log
+
+# IDE
+.vscode/
+.idea/
+.agent/

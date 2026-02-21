@@ -1,0 +1,80 @@
+.calendar-card {
+    max-height: 420px;
+    overflow: hidden;
+}
+
+.calendar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+    max-height: 340px;
+    padding-right: 0.5rem;
+}
+
+.cal-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    transition: background 0.2s;
+}
+
+.cal-row:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.cal-time {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    min-width: 52px;
+}
+
+.cal-event {
+    flex: 1;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.cal-values {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.cal-forecast,
+.cal-prev {
+    font-variant-numeric: tabular-nums;
+}
+
+.impact-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.impact-dot.high {
+    background: var(--accent-red);
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+}
+
+.impact-dot.medium {
+    background: var(--accent-amber);
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+}
+
+.impact-dot.low {
+    background: var(--accent-cyan);
+}
+
+@media (max-width: 640px) {
+    .cal-values {
+        display: none;
+    }
+}

@@ -1,0 +1,120 @@
+/* 📱 VIL Mobile Dashboard Refinements */
+
+.mobile-dashboard-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-lg);
+    padding-bottom: 40px;
+}
+
+.dashboard-section {
+    width: 100%;
+}
+
+.section-header-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--sp-md);
+}
+
+.section-header-mobile .section-title {
+    margin-bottom: 0;
+    font-size: 0.8125rem;
+}
+
+.asset-tabs-mini {
+    display: flex;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2px;
+    border-radius: var(--radius-md);
+}
+
+.mini-tab {
+    background: transparent;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.mini-tab.active {
+    background: var(--bg-card-hover);
+    box-shadow: var(--shadow-sm);
+}
+
+.view-link {
+    font-size: 0.6875rem;
+    color: var(--accent-blue);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* ── Regime Snap Card ────────────────────────────────────────────────────── */
+.regime-snap-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: var(--sp-md);
+}
+
+.snap-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.snap-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.snap-value {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.snap-value.highlight {
+    color: var(--accent-blue);
+}
+
+/* ── Audit Snap Grid ─────────────────────────────────────────────────────── */
+.audit-snap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.mini-stat-box {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: var(--sp-md);
+    align-items: center;
+}
+
+.m-label {
+    font-size: 0.625rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.m-val {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+}
+
+/* ── Mobile Overrides ────────────────────────────────────────────────────── */
+.mobile-view .dash-header {
+    padding-top: var(--sp-md);
+    padding-bottom: var(--sp-sm);
+}
+
+.mobile-view .dash-grid {
+    padding: 0 var(--sp-md);
+}

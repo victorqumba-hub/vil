@@ -1,0 +1,326 @@
+.signal-intelligence-lab {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-xl);
+    padding: var(--sp-md);
+    color: var(--text-main);
+}
+
+.lab-header {
+    border-bottom: 1px solid var(--border-glass);
+    padding-bottom: var(--sp-md);
+}
+
+.lab-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin: 0;
+    background: linear-gradient(135deg, var(--text-main) 0%, var(--accent-blue) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.lab-title .v-tag {
+    font-size: 0.75rem;
+    background: var(--accent-blue);
+    -webkit-text-fill-color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+.lab-subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+.lab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-xl);
+}
+
+.section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--sp-md);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+.reports-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-md);
+}
+
+.intelligence-report-card {
+    padding: var(--sp-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    transition: transform 0.2s;
+}
+
+.intelligence-report-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.report-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.report-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    background: rgba(0, 122, 255, 0.1);
+    color: var(--accent-blue);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.report-summary {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: var(--sp-md);
+}
+
+.report-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.stat-value {
+    font-weight: 700;
+}
+
+.stat-value.pos {
+    color: var(--text-green);
+}
+
+.stat-value.neg {
+    color: var(--text-red);
+}
+
+/* Signals Table */
+.signals-table-wrapper {
+    overflow: hidden;
+    padding: 0;
+}
+
+.signals-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.signals-table th {
+    text-align: left;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.signals-table td {
+    padding: 12px;
+    border-top: 1px solid var(--border-glass);
+}
+
+.signals-table tr:hover {
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.signals-table tr.active {
+    background: rgba(0, 122, 255, 0.05);
+}
+
+.asset-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.symbol {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.direction-tag {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.status-pill {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.status-pill.success {
+    background: rgba(0, 255, 127, 0.1);
+    color: var(--text-green);
+}
+
+.status-pill.failed {
+    background: rgba(255, 69, 58, 0.1);
+    color: var(--text-red);
+}
+
+.status-pill.dropped {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+}
+
+.quality-bar {
+    width: 60px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.quality-bar .fill {
+    height: 100%;
+    background: var(--accent-blue);
+}
+
+/* Forensic Detail View */
+.forensic-detail-view {
+    margin-top: var(--sp-xl);
+    padding: var(--sp-lg);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--accent-blue);
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 122, 255, 0.15);
+}
+
+.view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--sp-lg);
+    border-bottom: 1px solid var(--border-glass);
+    padding-bottom: var(--sp-md);
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.forensic-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--sp-lg);
+}
+
+.sub-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    margin: var(--sp-md) 0 8px 0;
+}
+
+.causality-box,
+.critique-box,
+.adjustments-box {
+    padding: var(--sp-md);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    min-height: 80px;
+}
+
+.highlight-card {
+    background: rgba(0, 122, 255, 0.05);
+    border: 1px solid rgba(0, 122, 255, 0.2);
+    border-radius: 8px;
+    padding: var(--sp-md);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-md);
+}
+
+.metric-box {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-glass);
+    border-radius: 4px;
+}
+
+.metric-box label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.metric-box span {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.lab-loading {
+    padding: var(--sp-xl);
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.empty-state {
+    padding: var(--sp-xl);
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px dashed var(--border-glass);
+    border-radius: 8px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}

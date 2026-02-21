@@ -1,0 +1,140 @@
+.portfolio-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.portfolio-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.pf-stat {
+    text-align: center;
+    padding: 10px 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.pf-label {
+    display: block;
+    font-size: 0.625rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.pf-value {
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+}
+
+.pf-value.positive {
+    color: var(--accent-green);
+}
+
+.pf-value.negative {
+    color: var(--accent-red);
+}
+
+.pf-value.accent {
+    color: var(--accent-blue);
+}
+
+.pf-secondary {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-glass);
+}
+
+.pf-mini {
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    color: var(--text-muted);
+}
+
+.pf-mini .positive {
+    color: var(--accent-green);
+    font-weight: 600;
+    font-family: var(--font-mono);
+}
+
+.pf-mini .negative {
+    color: var(--accent-red);
+    font-weight: 600;
+    font-family: var(--font-mono);
+}
+
+.trades-card {
+    max-height: 350px;
+    overflow: hidden;
+}
+
+.trades-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.trade-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02);
+    font-size: 0.8rem;
+    transition: background 0.15s;
+}
+
+.trade-row:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.trade-sym {
+    font-weight: 600;
+    min-width: 80px;
+    font-size: 0.8rem;
+}
+
+.trade-status {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    flex: 1;
+    color: var(--text-muted);
+}
+
+.trade-pnl {
+    font-weight: 700;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    min-width: 70px;
+    text-align: right;
+    font-size: 0.8rem;
+}
+
+.trade-pnl.positive {
+    color: var(--accent-green);
+}
+
+.trade-pnl.negative {
+    color: var(--accent-red);
+}
+
+@media (max-width: 640px) {
+    .portfolio-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

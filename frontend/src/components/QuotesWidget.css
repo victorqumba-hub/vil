@@ -1,0 +1,78 @@
+.quotes-card {
+    overflow: hidden;
+}
+
+.quotes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.quote-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.2s;
+}
+
+.quote-row:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.quote-symbol {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.88rem;
+    min-width: 100px;
+}
+
+.quote-type-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.quote-type-dot.forex {
+    background: var(--accent-blue);
+}
+
+.quote-type-dot.crypto {
+    background: var(--accent-amber);
+}
+
+.quote-type-dot.commodity {
+    background: var(--accent-green);
+}
+
+.quote-type-dot.index {
+    background: var(--accent-purple);
+}
+
+.quote-price {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.quote-change {
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    min-width: 70px;
+    text-align: right;
+}
+
+.quote-change.positive {
+    color: var(--accent-green);
+}
+
+.quote-change.negative {
+    color: var(--accent-red);
+}

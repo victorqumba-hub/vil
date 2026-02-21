@@ -1,0 +1,169 @@
+.asset-intelligence-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.intelligence-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+/* ── Deep Analytics View ──────────────────────────────────── */
+
+.deep-analytics-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.deep-analytics-modal {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: var(--text-secondary);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.close-modal:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+.modal-header {
+    padding: 2rem;
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.modal-body {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 900px) {
+    .modal-body {
+        grid-template-columns: 1fr;
+    }
+}
+
+.analytics-section {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.analytics-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-blue);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.data-row:last-child {
+    border-bottom: none;
+}
+
+.data-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.data-value {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.data-value.high {
+    color: var(--accent-green);
+}
+
+.data-value.low {
+    color: var(--accent-red);
+}
+
+/* ── Export Buttons ───────────────────────────────────────── */
+
+.export-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn-export {
+    flex: 1;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-glass);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.btn-export:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

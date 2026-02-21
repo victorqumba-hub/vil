@@ -1,0 +1,370 @@
+/* Base Card Styles */
+.signal-card-new {
+    background: #0f1219;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.25rem;
+    color: #fff;
+    font-family: Inter, sans-serif;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.signal-card-new:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ── Header ──────────────────────────────── */
+.sc-n-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sc-n-icon-wrapper {
+    margin-right: 1rem;
+}
+
+.sc-n-icon-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.sc-n-icon-circle.buy-theme {
+    background: #2563eb;
+    color: white;
+}
+
+.sc-n-icon-circle.sell-theme {
+    background: #db2777;
+    color: white;
+}
+
+/* Fallback icons */
+.sc-n-icon-circle:empty::before {
+    content: "$";
+}
+
+.sc-n-info {
+    flex: 1;
+}
+
+.sc-n-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.sc-n-meta {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.sc-n-class-tag {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.35rem;
+    border-radius: 3px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.sc-n-class-tag.forex {
+    background: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+}
+
+.sc-n-class-tag.index {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+}
+
+.sc-n-class-tag.commodity {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+}
+
+.sc-n-class-tag.metal {
+    background: rgba(234, 179, 8, 0.15);
+    color: #facc15;
+}
+
+.sc-n-class-tag.crypto {
+    background: rgba(139, 92, 246, 0.15);
+    color: #a78bfa;
+}
+
+.sc-n-badge {
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid transparent;
+}
+
+.sc-n-badge.buy {
+    color: #10b981;
+    border-color: rgba(16, 185, 129, 0.3);
+    background: rgba(16, 185, 129, 0.1);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.1);
+}
+
+.sc-n-badge.sell {
+    color: #f43f5e;
+    border-color: rgba(244, 63, 94, 0.3);
+    background: rgba(244, 63, 94, 0.1);
+    box-shadow: 0 0 10px rgba(244, 63, 94, 0.1);
+}
+
+.sc-n-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.sc-n-box {
+    background: #1e293b;
+    padding: 0.75rem 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sc-n-box.entry {
+    background: #1e293b;
+}
+
+.sc-n-box.stop {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.sc-n-box.target {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+.sc-n-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.5px;
+}
+
+.sc-n-box.stop .sc-n-label {
+    color: #f87171;
+}
+
+.sc-n-box.target .sc-n-label {
+    color: #34d399;
+}
+
+.sc-n-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+}
+
+.sc-n-stats {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sc-n-stat-group {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.stat-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.stat-value.high {
+    color: #10b981;
+}
+
+.stat-value.med {
+    color: #f59e0b;
+}
+
+.stat-value.white {
+    color: #fff;
+}
+
+.sc-n-progress-container {
+    flex: 1;
+    height: 6px;
+    background: #334155;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-left: auto;
+    max-width: 100px;
+}
+
+.sc-n-progress-bar {
+    height: 100%;
+    background: #10b981;
+    border-radius: 3px;
+}
+
+/* ── Regime / Timer Row ──────────────────── */
+.sc-n-row-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+}
+
+.sc-n-regime {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #94a3b8;
+}
+
+.icon-pulse {
+    color: #64748b;
+}
+
+.regime-label {
+    font-weight: 500;
+}
+
+.regime-badge {
+    color: #cbd5e1;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.regime-badge.trending {
+    color: #facc15;
+}
+
+.sc-n-timer {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #cbd5e1;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+}
+
+/* ── Actions Row ─────────────────────────── */
+.sc-n-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.sc-n-actions button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.6rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+.btn-approve {
+    border-color: rgba(16, 185, 129, 0.3);
+    background: rgba(16, 185, 129, 0.05);
+    color: #10b981;
+}
+
+.btn-approve:hover {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.6);
+}
+
+.btn-reject {
+    border-color: rgba(244, 63, 94, 0.3);
+    background: rgba(244, 63, 94, 0.05);
+    color: #f43f5e;
+}
+
+.btn-reject:hover {
+    background: rgba(244, 63, 94, 0.15);
+    border-color: rgba(244, 63, 94, 0.6);
+}
+
+/* ── Structure & Liquidity ───────────────── */
+.sc-n-row-info.secondary {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sc-n-tag.sweep-tag {
+    background: rgba(255, 215, 0, 0.2);
+    color: gold;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: auto;
+    font-weight: 600;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.regime-badge.high-conf {
+    border: 1px solid rgba(0, 255, 128, 0.4);
+    color: #00ff80;
+}
+
+.verified-badge {
+    font-size: 0.6rem;
+    background: rgba(0, 212, 255, 0.15);
+    color: #00d4ff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 8px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+}

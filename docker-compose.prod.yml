@@ -1,0 +1,71 @@
+version: "3.9"
+
+services:
+  # ── PostgreSQL ──────────────────────────────────────────────
+  postgres:
+    image: postgres:15-alpine
+    container_name: vil-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: vildb
+      POSTGRES_USER: vil
+      POSTGRES_PASSWORD: vilpass
+    volumes:
+      - vil_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U vil -d vildb" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis ───────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: vil-redis
+    restart: always
+    volumes:
+      - vil_redis:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Backend API ─────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: vil-backend
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://vil:vilpass@postgres:5432/vildb
+      - REDIS_URL=redis://redis:6379/0
+      # Ensure these secrets are set in your .env or CI/CD environment
+      - SECRET_KEY=${SECRET_KEY}
+      - OANDA_API_KEY=${OANDA_API_KEY}
+      - OANDA_ACCOUNT_ID=${OANDA_ACCOUNT_ID}
+      - OANDA_ENV=${OANDA_ENV:-practice}
+    ports:
+      - "8000:8000"
+
+  # ── Frontend UI ─────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: vil-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  vil_pgdata:
+  vil_redis:

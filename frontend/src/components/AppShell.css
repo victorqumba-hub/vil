@@ -1,0 +1,215 @@
+.app-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--bg-primary);
+    overflow: hidden;
+}
+
+/* ── Top Header ──────────────────────────────────────────────────────────── */
+.top-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-glass);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--sp-lg);
+    z-index: 1000;
+}
+
+.logo-compact {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.25rem;
+    background: var(--grad-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.account-selector {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 16px;
+    border-radius: var(--radius-lg);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: var(--sp-sm);
+    border: 1px solid var(--border-glass);
+}
+
+.dropdown-arrow {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.icon-btn {
+    background: transparent;
+    font-size: 1.25rem;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.status-strip {
+    position: absolute;
+    bottom: -24px;
+    left: 0;
+    right: 0;
+    height: 24px;
+    background: rgba(10, 12, 18, 0.9);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 var(--sp-md);
+    font-size: 0.625rem;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.badge-status {
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.badge-status.live {
+    background: rgba(5, 150, 105, 0.15);
+    color: var(--accent-green);
+}
+
+.regime-pill {
+    color: var(--accent-blue);
+    text-transform: uppercase;
+}
+
+.connection-pill.green {
+    color: var(--accent-green);
+    margin-left: auto;
+}
+
+/* ── Content Area ────────────────────────────────────────────────────────── */
+.core-content {
+    margin-top: 88px;
+    /* Header + Strip */
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--sp-md);
+    padding-bottom: 100px;
+    /* Space for bottom nav */
+}
+
+.desktop .core-content {
+    margin-left: 240px;
+    padding-bottom: var(--sp-lg);
+}
+
+/* ── Bottom Navigation ───────────────────────────────────────────────────── */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border-glass);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+    flex: 1;
+}
+
+.nav-item.active {
+    color: var(--accent-blue);
+    position: relative;
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: var(--accent-blue);
+    box-shadow: 0 0 10px var(--accent-blue);
+    border-radius: 2px;
+}
+
+.nav-icon {
+    font-size: 1.5rem;
+    transition: transform 0.2s ease;
+}
+
+.nav-item.active .nav-icon {
+    transform: translateY(-2px);
+    text-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
+}
+
+.nav-label {
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ── Sidebar (Desktop) ───────────────────────────────────────────────────── */
+.sidebar {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    bottom: 0;
+    width: 240px;
+    background: var(--bg-card);
+    border-right: 1px solid var(--border-glass);
+    padding: var(--sp-lg) var(--sp-md);
+    z-index: 900;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: var(--text-secondary);
+    border-radius: var(--radius-md);
+    margin-bottom: 4px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.sidebar-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+}
+
+.sidebar-item.active {
+    background: rgba(79, 70, 229, 0.1);
+    color: var(--accent-blue);
+}
+
+@media (max-width: 1024px) {
+    .desktop-only {
+        display: none !important;
+    }
+}

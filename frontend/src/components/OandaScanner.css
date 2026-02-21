@@ -1,0 +1,231 @@
+.oanda-scanner {
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.scanner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.status-indicator h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.status-pulse {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor;
+}
+
+.status-pulse.running {
+    animation: pulse-blue 1.5s infinite;
+}
+
+.status-pulse.success {
+    animation: pulse-green 2s infinite;
+}
+
+.status-pulse.error {
+    animation: pulse-red 0.5s infinite;
+}
+
+@keyframes pulse-blue {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 212, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
+    }
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+    }
+}
+
+@keyframes pulse-red {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.7);
+    }
+
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(255, 68, 68, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 68, 68, 0);
+    }
+}
+
+.refresh-rate {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+.scanner-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.scan-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+}
+
+.scan-item .label {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.status-text {
+    font-weight: 700;
+}
+
+.status-text.success {
+    color: #00ff88;
+}
+
+.status-text.running {
+    color: #00d4ff;
+}
+
+.status-text.error {
+    color: #ff4444;
+}
+
+.scanning-animation {
+    margin-top: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 0.5rem;
+}
+
+.scan-bar {
+    height: 3px;
+    width: 30%;
+    background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+    animation: scan 1.5s infinite linear;
+    border-radius: 2px;
+}
+
+@keyframes scan {
+    0% {
+        left: -30%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.scan-msg {
+    font-size: 0.75rem;
+    color: #00d4ff;
+    font-style: italic;
+}
+
+.error-alert {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(255, 68, 68, 0.1);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 68, 68, 0.2);
+}
+
+.error-msg {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #ff4444;
+    font-weight: 600;
+}
+
+.symbol-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+}
+
+.symbol-chip {
+    font-size: 0.7rem;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.scanner-footer {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+}
+
+.auth-badge {
+    font-size: 0.6rem;
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 800;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.data-source {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+}
+
+.elapsed {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.3);
+}

@@ -1,0 +1,209 @@
+.tools-card {
+    overflow: hidden;
+}
+
+.tools-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.tool-tab {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 500;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.tool-tab:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+}
+
+.tool-tab.active {
+    background: rgba(99, 102, 241, 0.12);
+    color: var(--accent-blue);
+    border-color: rgba(99, 102, 241, 0.25);
+}
+
+/* Market Hours */
+.market-hours {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.session-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.session-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.session-dot.open {
+    background: var(--accent-green);
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+
+.session-dot.closed {
+    background: var(--text-muted);
+}
+
+.session-name {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 0.88rem;
+    flex: 1;
+}
+
+.session-hours {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.session-status {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.session-status.open {
+    color: var(--accent-green);
+}
+
+.session-status.closed {
+    color: var(--text-muted);
+}
+
+/* Converter */
+.converter-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.converter-inputs input {
+    width: 120px;
+}
+
+.converter-inputs select {
+    width: 80px;
+}
+
+.converter-arrow {
+    color: var(--accent-blue);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.converter-result {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgba(99, 102, 241, 0.08);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.result-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--grad-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.result-rate {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+/* Interest Rates */
+.rates-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.rate-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.rate-bank {
+    flex: 1;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.rate-value {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
+}
+
+.rate-bias {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+}
+
+.rate-bias.hawkish {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--accent-red);
+}
+
+.rate-bias.dovish {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--accent-green);
+}
+
+.rate-bias.neutral {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--accent-amber);
+}
+
+/* Knowledge */
+.knowledge {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.kb-item {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.kb-item strong {
+    color: var(--text-primary);
+}

@@ -1,0 +1,84 @@
+.news-card {
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+    max-height: 400px;
+    padding-right: 0.5rem;
+}
+
+.news-item {
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.news-item:last-child {
+    border-bottom: none;
+}
+
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+    font-size: 0.75rem;
+}
+
+.news-tag {
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.news-tag.forex {
+    color: var(--color-accent);
+    background: rgba(0, 240, 255, 0.15);
+}
+
+.news-tag.crypto {
+    color: #f7931a;
+    background: rgba(247, 147, 26, 0.15);
+}
+
+.news-tag.commodities {
+    color: #ffd700;
+    background: rgba(255, 215, 0, 0.15);
+}
+
+.news-tag.central_banks {
+    color: #ff4757;
+    background: rgba(255, 71, 87, 0.15);
+}
+
+.news-time {
+    color: var(--text-muted);
+}
+
+.news-title {
+    display: block;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+    text-decoration: none;
+    margin-bottom: 0.3rem;
+    transition: color 0.2s;
+}
+
+.news-title:hover {
+    color: var(--color-primary);
+}
+
+.news-source {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}

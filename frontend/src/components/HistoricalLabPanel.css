@@ -1,0 +1,206 @@
+.historical-lab-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* Lab Header & Filter Bar */
+.lab-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.filter-input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 0.6rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.filter-input:focus {
+    border-color: var(--accent-primary);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Forensic Table */
+.forensic-table-container {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    min-height: 400px;
+}
+
+.forensic-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.forensic-table th {
+    text-align: left;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.forensic-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    vertical-align: middle;
+}
+
+.forensic-table tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-success {
+    background: rgba(34, 197, 94, 0.1);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.status-failed {
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.status-expired {
+    background: rgba(148, 163, 184, 0.1);
+    color: #94a3b8;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.status-active {
+    background: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    animation: pulse-blue 2s infinite;
+}
+
+/* Forensic Detail View */
+.forensic-detail-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 2rem;
+}
+
+.forensic-detail-modal {
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 1100px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-content {
+    padding: 2rem;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+/* Lab Widgets */
+.lab-widget {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.25rem;
+    border-radius: 10px;
+}
+
+.widget-title {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+@keyframes pulse-blue {
+    0% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

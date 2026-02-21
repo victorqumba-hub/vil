@@ -1,0 +1,140 @@
+.risk-monitor-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.risk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.risk-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg, 10px);
+    padding: 20px;
+    backdrop-filter: blur(12px);
+}
+
+.risk-card h3 {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.metric-large {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    margin-bottom: 4px;
+    font-variant-numeric: tabular-nums;
+}
+
+.metric-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.metric-trend {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 8px;
+    font-family: var(--font-mono);
+}
+
+.trend-up {
+    background: rgba(13, 150, 104, 0.08);
+    color: var(--accent-green);
+}
+
+.risk-monitor-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-lg);
+}
+
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-md);
+}
+
+.metric-card {
+    padding: var(--sp-md);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-glass);
+}
+
+.exposure-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.exposure-bar-wrap {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 2px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.exposure-bar {
+    height: 100%;
+    background: var(--accent-blue);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+
+/* ── Drawdown Chart Placeholder ─────────────────────────── */
+
+.chart-placeholder {
+    height: 160px;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    padding-top: 12px;
+}
+
+.chart-bar {
+    flex: 1;
+    background: rgba(99, 102, 241, 0.15);
+    border-radius: 2px 2px 0 0;
+    transition: background 0.15s;
+}
+
+.chart-bar:hover {
+    background: var(--accent-blue);
+}
+
+.risk-footer {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 16px;
+}
+
+.alert-item {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(217, 119, 6, 0.06);
+    border: 1px solid rgba(217, 119, 6, 0.12);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--accent-amber);
+    font-size: 0.8rem;
+}

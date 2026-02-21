@@ -1,0 +1,70 @@
+.no-data {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 32px 16px;
+}
+
+.reports-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.report-item {
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    transition: background 0.15s;
+    border: 1px solid transparent;
+}
+
+.report-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.04);
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.report-symbol {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--accent-blue);
+    font-family: var(--font-display);
+}
+
+.report-time {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+.report-summary {
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+
+.report-rationale {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    padding-left: 8px;
+    border-left: 2px solid var(--accent-purple);
+    margin-top: 4px;
+}
+
+.report-risk {
+    font-size: 0.7rem;
+    color: var(--accent-amber);
+    margin-top: 6px;
+    font-weight: 500;
+}

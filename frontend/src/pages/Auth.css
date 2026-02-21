@@ -1,0 +1,672 @@
+/* ═══════════════════════════════════════════════════════════════
+   Auth Page Styles (Login & Register)
+   ═══════════════════════════════════════════════════════════════ */
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.auth-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.25;
+}
+
+.auth-page .orb-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--accent-blue);
+    top: -100px;
+    left: 20%;
+}
+
+.auth-page .orb-2 {
+    width: 350px;
+    height: 350px;
+    background: var(--accent-purple);
+    bottom: -80px;
+    right: 20%;
+}
+
+.auth-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 440px;
+    padding: 2.5rem;
+    margin: 1rem;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+}
+
+.auth-header h2 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-top: 0.5rem;
+}
+
+.auth-header p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+}
+
+.auth-error {
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: var(--accent-red);
+    padding: 0.65rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.form-group label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.form-group input {
+    width: 100%;
+}
+
+.auth-submit {
+    width: 100%;
+    margin-top: 0.5rem;
+    justify-content: center;
+}
+
+.auth-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.auth-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.auth-footer p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.auth-demo {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border-radius: var(--radius);
+    background: rgba(99, 102, 241, 0.08);
+    font-size: 0.78rem !important;
+    color: var(--accent-blue) !important;
+}
+
+/* ── Enhanced Registration Styles ──────────────────────────────────── */
+
+.auth-card-wide {
+    max-width: 560px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.optional {
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.auth-select {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-glass);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.auth-select:focus {
+    border-color: var(--accent-blue);
+    outline: none;
+}
+
+.account-type-toggle {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.type-btn {
+    flex: 1;
+    padding: 0.65rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-glass);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.type-btn:hover {
+    border-color: var(--accent-blue);
+}
+
+.type-btn.active {
+    border-color: var(--accent-blue);
+    background: rgba(99, 102, 241, 0.12);
+    color: var(--text-primary);
+}
+
+/* ── Password Strength ── */
+
+.password-strength {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.strength-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.strength-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s, background 0.3s;
+}
+
+.strength-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.password-rules {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-top: 0.2rem;
+}
+
+.password-rules span {
+    font-size: 0.68rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.rule-pass {
+    background: rgba(54, 207, 201, 0.12);
+    color: #36cfc9;
+}
+
+.rule-fail {
+    background: rgba(255, 77, 79, 0.08);
+    color: var(--text-muted);
+}
+
+/* ── Terms ── */
+
+.terms-group {
+    margin-top: 0.5rem;
+}
+
+.terms-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+/* ── Broker Connect Page ── */
+
+.broker-info-banner {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: var(--radius);
+    background: rgba(54, 207, 201, 0.06);
+    border: 1px solid rgba(54, 207, 201, 0.15);
+    margin-bottom: 1.5rem;
+}
+
+.broker-info-banner .info-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.broker-info-banner strong {
+    font-size: 0.88rem;
+    color: var(--text-primary);
+}
+
+.broker-info-banner p {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-top: 0.2rem;
+}
+
+.form-hint {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+}
+
+/* ── Testing Animation ── */
+
+.broker-testing {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.testing-animation {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+}
+
+.pulse-ring {
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--accent-blue);
+    border-radius: 50%;
+    animation: pulseRing 1.5s ease-out infinite;
+}
+
+.pulse-ring.delay {
+    animation-delay: 0.5s;
+}
+
+.testing-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ── Success State ── */
+
+.broker-success {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.success-icon-wrap {
+    margin-bottom: 1rem;
+}
+
+.success-icon {
+    font-size: 3rem;
+    animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+    }
+
+    70% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.broker-success h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.broker-success p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.broker-summary-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-label {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.summary-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.summary-value.mono {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+}
+
+.env-badge {
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(99, 102, 241, 0.12);
+    color: var(--accent-blue);
+}
+
+/* ── Dashboard Broker Gate ── */
+
+.broker-gate-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    min-height: 60vh;
+    width: 100%;
+}
+
+.broker-gate-overlay .gate-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.broker-gate-overlay h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.broker-gate-overlay p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    max-width: 400px;
+    margin-bottom: 2rem;
+}
+
+/* ── Broker Status Badge ── */
+
+.broker-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.broker-status-badge.connected {
+    background: rgba(54, 207, 201, 0.12);
+    color: #36cfc9;
+}
+
+.broker-status-badge.disconnected {
+    background: rgba(255, 77, 79, 0.12);
+    color: #ff4d4f;
+}
+
+/* ── Auth Demo Card ── */
+
+.auth-demo-card {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    background: rgba(99, 102, 241, 0.06);
+    border: 1px solid rgba(99, 102, 241, 0.12);
+}
+
+.demo-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-blue);
+    margin-bottom: 0.4rem;
+}
+
+.demo-creds {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.demo-creds code {
+    font-size: 0.78rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+}
+
+/* ── Input Wrappers ── */
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 0.75rem;
+    font-size: 0.9rem;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.input-wrapper input {
+    padding-left: 2.5rem;
+}
+
+/* ── Label Row ── */
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forgot-link {
+    font-size: 0.78rem;
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* ── Form Options ── */
+
+.form-options {
+    display: flex;
+    align-items: center;
+}
+
+/* ── Checkbox ── */
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+/* ── Footer Link ── */
+
+.footer-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* ── Spinner ── */
+
+.spinner-loader {
+    display: inline-flex;
+    gap: 0.3rem;
+}
+
+.spinner-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: dotPulse 0.8s infinite ease-in-out;
+}
+
+.spinner-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.spinner-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dotPulse {
+
+    0%,
+    80%,
+    100% {
+        opacity: 0.3;
+    }
+
+    40% {
+        opacity: 1;
+    }
+}
+
+.auth-page .orb-3 {
+    width: 300px;
+    height: 300px;
+    background: var(--accent-green, #36cfc9);
+    top: 60%;
+    left: 10%;
+    opacity: 0.15;
+}
+
+@media (max-width: 600px) {
+    .auth-card-wide {
+        max-width: 100%;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
