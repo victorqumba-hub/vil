@@ -418,7 +418,6 @@ class MLSignalDataset(Base):
     features_json = Column(Text, nullable=False)
     
     target_reached = Column(Integer, nullable=True)
-    target_reached = Column(Integer, nullable=True)
     stop_hit = Column(Integer, nullable=True)
     r_multiple = Column(Float, nullable=True)
     failure_classification = Column(String(50), nullable=True)
