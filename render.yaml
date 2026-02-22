@@ -15,3 +15,12 @@ services:
         value: "*" # Update after frontend deployment
       - key: ML_SERVICE_URL
         value: "http://localhost:8001"
+
+  - type: worker
+    name: vil-ml-service
+    env: python
+    buildCommand: pip install -r ml_service/requirements.txt
+    startCommand: cd ml_service && uvicorn app.main:app --host 0.0.0.0 --port 8001
+    envVars:
+      - key: DATABASE_URL
+        sync: false
