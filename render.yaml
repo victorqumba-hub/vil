@@ -1,37 +1,17 @@
 services:
   - type: web
-    name: vil-backend
+    name: vil-integrated-backend
     env: python
+    region: frankfurt # Or your preferred region
+    plan: free
     buildCommand: pip install -r backend/requirements.txt
-    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port 8000
+    startCommand: gunicorn -w 1 -k uvicorn.workers.UvicornWorker backend.app.main:app --bind 0.0.0.0:$PORT
     envVars:
       - key: DATABASE_URL
-        sync: false # Set in Render dashboard
+        sync: false # Set in Render dashboard (Supabase URL)
       - key: REDIS_URL
-        fromService:
-          name: vil-redis
-          type: redis
+        sync: false # Set in Render dashboard (Upstash URL)
       - key: JWT_SECRET_KEY
         generateValue: true
       - key: CORS_ORIGINS
-        value: "*" # Update after frontend deployment
-      - key: ML_SERVICE_URL
-        value: "http://localhost:8001"
-
-  - type: worker
-    name: vil-ml-service
-    env: python
-    buildCommand: pip install -r ml_service/requirements.txt
-    startCommand: cd ml_service && uvicorn app.main:app --host 0.0.0.0 --port 8001
-    envVars:
-      - key: DATABASE_URL
-        sync: false
-      - key: REDIS_URL
-        fromService:
-          name: vil-redis
-          type: redis
-
-  - type: redis
-    name: vil-redis
-    plan: free # Use free tier for starting out
-    ipAllowList: [] # Only allow internal traffic
+        value: "*"
