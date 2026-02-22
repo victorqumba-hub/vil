@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.db.models import Signal, Asset, LifecycleStatus, SignalClassification, MarketRegime
 from app.services.data_ingestion import get_data_provider, compute_atr, compute_volatility_percentile
 from app.services.regime_classifier import classify_regime
-from app.services.ml_client import ml_client
+from sqlalchemy import text
 
 class LifecycleManager:
     """Manages the lifecycle of generated signals."""
@@ -72,14 +72,22 @@ class LifecycleManager:
 
                     if hit_tp:
                         new_status = LifecycleStatus.SUCCESS
-                        # Log success outcome to ML service
-                        await ml_client.log_outcome(signal.id, "SUCCESS", r_multiple=signal.risk_reward or 1.0)
+                        # Log success outcome to local ML dataset
+                        await db.execute(text("""
+                            UPDATE ml_signal_dataset 
+                            SET target_reached = 1, stop_hit = 0, r_multiple = :rm, created_at = :now
+                            WHERE signal_id = :sid
+                        """), {"rm": signal.risk_reward or 1.0, "now": datetime.utcnow(), "sid": signal.id})
                     elif hit_sl:
                         new_status = LifecycleStatus.FAILED
                         # ── Layer 11: Failure Classification ──
                         signal.failure_category = await self._classify_failure(signal, price)
-                        # Log failure outcome to ML service
-                        await ml_client.log_outcome(signal.id, "FAILED", r_multiple=-1.0)
+                        # Log failure outcome to local ML dataset
+                        await db.execute(text("""
+                            UPDATE ml_signal_dataset 
+                            SET target_reached = 0, stop_hit = 1, r_multiple = -1.0, created_at = :now
+                            WHERE signal_id = :sid
+                        """), {"now": datetime.utcnow(), "sid": signal.id})
 
                 if new_status != signal.status:
                     signal.status = new_status
