@@ -47,7 +47,7 @@ from app.db.models import (
     MLSignalDataset
 )
 from app.services.asset_manager import AssetManager, AssetClass
-from app.services.ml_client import ml_client
+from app.ml.engine import model_manager
 import json
 import asyncio
 from app.ws.websocket import manager as ws_manager
@@ -484,14 +484,14 @@ async def run_pipeline(
                     }
 
                     # 2. Call ML Inference Service (Predict Success)
-                    ml_result = await ml_client.get_success_probability(ml_features)
+                    ml_result = model_manager.predict(ml_features)
                     if ml_result:
-                        new_signal.ml_probability = ml_result["successProbability"]
-                        new_signal.ml_confidence = ml_result["confidenceScore"]
-                        new_signal.model_version = ml_result["modelVersion"]
+                        new_signal.ml_probability = ml_result["prob"]
+                        new_signal.ml_confidence = ml_result["confidence"]
+                        new_signal.model_version = ml_result["version"]
                         print(f"[Orchestrator] ML AUGMENT: {s_data['symbol']} -> Prob: {new_signal.ml_probability}")
                     else:
-                        print(f"[Orchestrator] ML FALLBACK: ML Service unavailable for {s_data['symbol']}. Using base scores.")
+                        print(f"[Orchestrator] ML FALLBACK: ML Engine error for {s_data['symbol']}. Using base scores.")
 
                     # 3. Store in Feature Store (MLSignalDataset)
                     session.add(new_signal)

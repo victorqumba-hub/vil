@@ -8,7 +8,9 @@ services:
       - key: DATABASE_URL
         sync: false # Set in Render dashboard
       - key: REDIS_URL
-        sync: false
+        fromService:
+          name: vil-redis
+          type: redis
       - key: JWT_SECRET_KEY
         generateValue: true
       - key: CORS_ORIGINS
@@ -24,3 +26,12 @@ services:
     envVars:
       - key: DATABASE_URL
         sync: false
+      - key: REDIS_URL
+        fromService:
+          name: vil-redis
+          type: redis
+
+  - type: redis
+    name: vil-redis
+    plan: free # Use free tier for starting out
+    ipAllowList: [] # Only allow internal traffic

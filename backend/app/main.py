@@ -22,6 +22,7 @@ from app.api.broker import router as broker_router
 from app.api.broker_integration import router as broker_integration_router
 from app.api.admin import router as admin_router
 from app.api.regime_attribution import router as regime_attribution_router
+from app.api.intelligence import router as intelligence_router
 
 from app.services.orchestrator import run_pipeline
 from app.services.pipeline_monitor import monitor
@@ -125,6 +126,7 @@ app.include_router(broker_router)
 app.include_router(broker_integration_router)
 app.include_router(admin_router)
 app.include_router(regime_attribution_router)
+app.include_router(intelligence_router)
 
 
 @app.get("/test-login")

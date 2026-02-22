@@ -4,8 +4,9 @@ import logging
 import json
 from datetime import datetime
 from typing import List, Dict, Any
-from sqlalchemy import text, select
+from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
+import uuid
 
 logger = logging.getLogger(__name__)
 
@@ -28,7 +29,6 @@ class ForensicEngine:
         if not row:
             return None
 
-        # row is a mapping, we can access by key if result is from text()
         data = dict(row._mapping)
         
         outcome = data.get("status")
@@ -65,7 +65,7 @@ class ForensicEngine:
         # 4. Intelligence Scoring
         quality_score = max(0, min(100, score - (10 if outcome == "FAILED" else -5)))
         
-        return {
+        analysis = {
             "signal_id": signal_id,
             "quality_score": quality_score,
             "execution_quality_score": 90.0 if not data.get("slippage") or data["slippage"] < 0.0001 else 70.0,
@@ -76,10 +76,44 @@ class ForensicEngine:
             "engine_critique": " | ".join(critique) if critique else "Engine performed as expected.",
             "suggested_adjustments": "Increase weight of volume-based suppression." if "exhaustion" in " ".join(causality) else "None."
         }
+        
+        await self._persist_analysis(analysis)
+        return analysis
+
+    async def _persist_analysis(self, analysis: Dict[str, Any]):
+        stmt = text("""
+            INSERT INTO signal_forensic_analysis (
+                id, signal_id, quality_score, execution_quality_score, 
+                structural_integrity_score, regime_compatibility_score, 
+                ml_confidence_deviation, causality_summary, engine_critique, 
+                suggested_adjustments, analyzed_at
+            ) VALUES (
+                :id, :sid, :qs, :eqs, :sis, :rcs, :mcd, :cs, :ec, :sa, :now
+            )
+            ON CONFLICT (signal_id) DO UPDATE SET
+                quality_score = EXCLUDED.quality_score,
+                causality_summary = EXCLUDED.causality_summary,
+                engine_critique = EXCLUDED.engine_critique,
+                analyzed_at = EXCLUDED.analyzed_at
+        """)
+        
+        await self.db.execute(stmt, {
+            "id": uuid.uuid4(),
+            "sid": analysis["signal_id"],
+            "qs": analysis["quality_score"],
+            "eqs": analysis["execution_quality_score"],
+            "sis": analysis["structural_integrity_score"],
+            "rcs": analysis["regime_compatibility_score"],
+            "mcd": analysis["ml_confidence_deviation"],
+            "cs": analysis["causality_summary"],
+            "ec": analysis["engine_critique"],
+            "sa": analysis["suggested_adjustments"],
+            "now": datetime.utcnow()
+        })
+        await self.db.commit()
 
     async def generate_batch_report(self) -> Dict[str, Any]:
         """Generates a structured report after 50+ signals are analyzed."""
-        # 1. Fetch analyzed signals
         query = text("""
             SELECT fa.*, s.status, s.regime, s.r_multiple_achieved 
             FROM signal_forensic_analysis fa
@@ -93,13 +127,12 @@ class ForensicEngine:
         if len(analyses) < 50:
             return None
 
-        # 2. Aggregate Metrics
         success_count = sum(1 for a in analyses if a["status"] == "SUCCESS")
         total = len(analyses)
         win_rate = (success_count / total) * 100
         avg_r = sum(a["r_multiple_achieved"] or 0 for a in analyses) / total
         
-        return {
+        report = {
             "batch_start_date": analyses[-1]["analyzed_at"],
             "batch_end_date": analyses[0]["analyzed_at"],
             "signal_count": total,
@@ -111,3 +144,34 @@ class ForensicEngine:
             "engine_critique_summary": "Scoring weights on liquidity are currently optimal, but structural detection needs more sensitivity in fast regimes.",
             "strategic_recommendations": "Narrow the entry window for High Volatility regimes to reduce slippage impact."
         }
+        
+        await self._persist_report(report)
+        return report
+
+    async def _persist_report(self, report: Dict[str, Any]):
+        stmt = text("""
+            INSERT INTO signal_intelligence_reports (
+                id, batch_start_date, batch_end_date, signal_count, 
+                executive_summary, expectancy, setup_efficiency_json, 
+                regime_performance_json, volatility_sensitivity_json, 
+                engine_critique_summary, strategic_recommendations, created_at
+            ) VALUES (
+                :id, :bsd, :bed, :sc, :es, :exp, :sej, :rpj, :vsj, :ecs, :sr, :now
+            )
+        """)
+        
+        await self.db.execute(stmt, {
+            "id": uuid.uuid4(),
+            "bsd": report["batch_start_date"],
+            "bed": report["batch_end_date"],
+            "sc": report["signal_count"],
+            "es": report["executive_summary"],
+            "exp": report["expectancy"],
+            "sej": report["setup_efficiency_json"],
+            "rpj": report["regime_performance_json"],
+            "vsj": report["volatility_sensitivity_json"],
+            "ecs": report["engine_critique_summary"],
+            "sr": report["strategic_recommendations"],
+            "now": datetime.utcnow()
+        })
+        await self.db.commit()

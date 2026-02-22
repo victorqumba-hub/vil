@@ -40,9 +40,6 @@ class Settings(BaseSettings):
     OANDA_ACCOUNT_ID: str = ""
     OANDA_ENV: str = "practice"  # practice or live
 
-    # ── ML Service ───────────────────────────────────────────────
-    ML_SERVICE_URL: str = "http://localhost:8001"
-
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
