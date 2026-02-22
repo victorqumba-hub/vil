@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: vil-backend
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port 8000
+    envVars:
+      - key: DATABASE_URL
+        sync: false # Set in Render dashboard
+      - key: REDIS_URL
+        sync: false
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: "*" # Update after frontend deployment
+      - key: ML_SERVICE_URL
+        value: "http://localhost:8001"
