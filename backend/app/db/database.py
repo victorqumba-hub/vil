@@ -12,10 +12,18 @@ logger = logging.getLogger(__name__)
 
 def get_engine_url():
     """Determine the best database URL to use."""
-    # In a real environment, we might try to ping the PG port here, 
-    # but for simplicity we'll rely on the startup script setting 
-    # the environment or checking the URL.
-    return settings.DATABASE_URL
+    url = settings.DATABASE_URL
+    
+    # Auto-fix for Supabase Transaction Pooler (port 6543):
+    # asyncpg uses prepared statements by default, but Supabase's
+    # transaction pooler does NOT support them. This causes cryptic
+    # "Tenant or user not found" errors. We auto-append the fix.
+    if "supabase" in url and "prepared_statement_cache_size" not in url:
+        separator = "&" if "?" in url else "?"
+        url = f"{url}{separator}prepared_statement_cache_size=0"
+        logger.info("[DB] Auto-applied prepared_statement_cache_size=0 for Supabase Pooler")
+    
+    return url
 
 connect_args = {}
 engine_kwargs = {
@@ -27,8 +35,10 @@ actual_url = get_engine_url()
 if "sqlite" in actual_url:
     connect_args["check_same_thread"] = False
 else:
-    engine_kwargs["pool_size"] = 20
-    engine_kwargs["max_overflow"] = 10
+    # Keep pool small for free-tier cloud instances
+    engine_kwargs["pool_size"] = 5
+    engine_kwargs["max_overflow"] = 3
+    engine_kwargs["pool_pre_ping"] = True
 
 engine = create_async_engine(
     actual_url,
