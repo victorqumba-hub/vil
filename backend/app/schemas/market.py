@@ -18,8 +18,9 @@ class MarketDataResponse(BaseModel):
     rsi: float | None
     timestamp: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = {
+        "from_attributes": True
+    }
 
 
 class OHLCVRequest(BaseModel):
