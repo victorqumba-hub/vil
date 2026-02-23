@@ -29,7 +29,13 @@ class Settings(BaseSettings):
     LOCKOUT_DURATION_MINUTES: int = 30
 
     # ── CORS ─────────────────────────────────────────────────────
-    CORS_ORIGINS: list[str] = ["http://localhost:5173", "http://localhost:5174", "http://localhost:3000", "http://localhost:4173"]
+    CORS_ORIGINS: list[str] = [
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:3000",
+        "http://localhost:4173",
+        "https://vil-iota.vercel.app",
+    ]
 
     # ── Mistral AI ───────────────────────────────────────────────
     MISTRAL_API_KEY: str = ""
