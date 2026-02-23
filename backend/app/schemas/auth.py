@@ -93,8 +93,9 @@ class UserResponse(BaseModel):
     last_login_at: datetime | None = None
     created_at: datetime | None = None
 
-    class Config:
-        from_attributes = True
+    model_config = {
+        "from_attributes": True
+    }
 
 
 # ── Broker Integration Schemas ───────────────────────────────────────────────
@@ -120,8 +121,9 @@ class BrokerAccountResponse(BaseModel):
     last_synced_at: datetime | None
     api_key_masked: str  # Last 4 chars only
 
-    class Config:
-        from_attributes = True
+    model_config = {
+        "from_attributes": True
+    }
 
 
 class BrokerStatusResponse(BaseModel):
