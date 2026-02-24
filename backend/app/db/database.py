@@ -13,17 +13,10 @@ logger = logging.getLogger(__name__)
 def get_engine_url():
     """Determine the best database URL to use."""
     url = settings.DATABASE_URL
-    
-    # Auto-fix for Supabase Transaction Pooler (port 6543):
-    # asyncpg uses prepared statements by default, but Supabase's
-    # transaction pooler does NOT support them. This causes cryptic
-    # "Tenant or user not found" errors. We auto-append the fix.
-    if "supabase" in url and "prepared_statement_cache_size" not in url:
-        separator = "&" if "?" in url else "?"
-        url = f"{url}{separator}prepared_statement_cache_size=0"
-        logger.info("[DB] Auto-applied prepared_statement_cache_size=0 for Supabase Pooler")
-    
+    # Note: Supabase Transaction Pooler fix is handled via connect_args
+    # in create_vil_engine(), NOT via URL parameters.
     return url
+
 
 def create_vil_engine():
     """Create a new engine based on current settings/env."""
