@@ -145,6 +145,23 @@ async def health_check():
     }
 
 
+@app.get("/db-check", tags=["system"])
+async def db_check():
+    """Diagnostic: test database connectivity."""
+    from sqlalchemy import text
+    from app.db.database import get_engine_url
+    url = get_engine_url()
+    # Mask password in URL for safety
+    safe_url = url.split("@")[-1] if "@" in url else url
+    try:
+        async with async_session() as session:
+            result = await session.execute(text("SELECT 1"))
+            val = result.scalar()
+            return {"db_status": "connected", "result": val, "engine_host": safe_url}
+    except Exception as e:
+        return {"db_status": "error", "error": str(e), "engine_host": safe_url}
+
+
 @app.get("/", tags=["system"])
 async def root():
     return {
