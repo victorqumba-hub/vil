@@ -1,6 +1,14 @@
 import axios from 'axios'
 
-const API_BASE = import.meta.env.VITE_API_URL || ''
+const getApiBase = () => {
+    if (import.meta.env.VITE_API_URL) return import.meta.env.VITE_API_URL
+    // Institutional logic: if browser is on 127.0.0.1, use 127.0.0.1 for API to avoid localhost/127 CORS quirks
+    const host = window.location.hostname
+    if (host === '127.0.0.1') return 'http://127.0.0.1:8000'
+    return 'http://localhost:8000'
+}
+
+const API_BASE = getApiBase()
 
 const api = axios.create({
     baseURL: API_BASE,

@@ -10,12 +10,17 @@ class ModelManager:
     def __init__(self):
         self.model_dir = os.path.join(os.path.dirname(__file__), "models")
         self.models = {}
-        self.load_models()
+        self._initialized = False
         
-    def load_models(self):
-        """Pre-loads all available regime models into memory."""
+    def _lazy_init(self):
+        """Pre-loads models only when first needed."""
+        if self._initialized:
+            return
+            
+        print("[ModelManager] Initializing models (Lazy-loading)...")
         if not os.path.exists(self.model_dir):
             os.makedirs(self.model_dir)
+            self._initialized = True
             return
 
         try:
@@ -30,8 +35,11 @@ class ModelManager:
                         print(f"[ModelManager] Loaded {regime} model: {f}")
         except Exception as e:
             print(f"[ModelManager] Error loading models: {e}")
+        finally:
+            self._initialized = True
 
     def predict(self, features: Dict[str, Any]) -> Dict[str, Any]:
+        self._lazy_init()
         regime = str(features.get("regime", "GLOBAL")).upper()
         
         # Determine which model to use

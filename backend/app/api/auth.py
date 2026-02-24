@@ -196,8 +196,12 @@ async def verify_email(token: str, db: AsyncSession = Depends(get_db)):
 async def login(body: LoginRequest, request: Request, db: AsyncSession = Depends(get_db)):
     client_ip = _get_client_ip(request)
 
-    result = await db.execute(select(User).where(User.email == body.email))
-    user = result.scalar_one_or_none()
+    try:
+        result = await db.execute(select(User).where(User.email == body.email))
+        user = result.scalar_one_or_none()
+    except Exception as e:
+        print(f"[AUTH] Database error during login query: {e}")
+        raise HTTPException(status_code=503, detail="Database temporarily unavailable. Please try again.")
 
     if not user:
         await log_event(db, "LOGIN", ip_address=client_ip, status="failure",
@@ -247,13 +251,17 @@ async def login(body: LoginRequest, request: Request, db: AsyncSession = Depends
     )
     db.add(rt)
 
-    await log_event(db, "LOGIN", user_id=user.id, ip_address=client_ip , status="success")
+    try:
+        await log_event(db, "LOGIN", user_id=user.id, ip_address=client_ip , status="success")
+    except Exception as e:
+        print(f"[AUTH] Audit log error (non-fatal): {e}")
 
     return TokenResponse(
         access_token=access_token,
         refresh_token=refresh_token_raw,
         expires_in=settings.JWT_EXPIRE_MINUTES * 60,
     )
+
 
 
 

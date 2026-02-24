@@ -25,26 +25,30 @@ def get_engine_url():
     
     return url
 
-connect_args = {}
-engine_kwargs = {
-    "echo": settings.DEBUG,
-}
+def create_vil_engine():
+    """Create a new engine based on current settings/env."""
+    url = get_engine_url()
+    
+    _connect_args = {}
+    _engine_kwargs = {
+        "echo": settings.DEBUG,
+    }
 
-actual_url = get_engine_url()
+    if "sqlite" in url:
+        _connect_args["check_same_thread"] = False
+    else:
+        # Keep pool small for free-tier cloud instances
+        _engine_kwargs["pool_size"] = 5
+        _engine_kwargs["max_overflow"] = 3
+        _engine_kwargs["pool_pre_ping"] = True
 
-if "sqlite" in actual_url:
-    connect_args["check_same_thread"] = False
-else:
-    # Keep pool small for free-tier cloud instances
-    engine_kwargs["pool_size"] = 5
-    engine_kwargs["max_overflow"] = 3
-    engine_kwargs["pool_pre_ping"] = True
+    return create_async_engine(
+        url,
+        connect_args=_connect_args,
+        **_engine_kwargs,
+    )
 
-engine = create_async_engine(
-    actual_url,
-    connect_args=connect_args,
-    **engine_kwargs,
-)
+engine = create_vil_engine()
 
 async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
