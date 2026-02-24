@@ -41,12 +41,22 @@ def create_vil_engine():
         _engine_kwargs["pool_size"] = 5
         _engine_kwargs["max_overflow"] = 3
         _engine_kwargs["pool_pre_ping"] = True
+        
+        # Critical fix for Supabase Transaction Pooler (port 6543):
+        # asyncpg uses prepared statements by default, but Supabase's
+        # transaction pooler does NOT support them. The fix MUST be
+        # passed via connect_args, not as a URL parameter.
+        if "supabase" in url or ":6543" in url:
+            _connect_args["statement_cache_size"] = 0
+            _connect_args["prepared_statement_cache_size"] = 0
+            logger.info("[DB] Applied statement_cache_size=0 for Supabase Transaction Pooler")
 
     return create_async_engine(
         url,
         connect_args=_connect_args,
         **_engine_kwargs,
     )
+
 
 engine = create_vil_engine()
 
